@@ -23,7 +23,7 @@ public class App {
         DAYS = new HashMap<>();
         DAYS.put(1, new Day01());
         DAYS.put(2, new Day02());
-        DAYS.put(3, new Day03());
+//        DAYS.put(3, new Day03());
     }
 
     private static List<String> loadInput(int day){
