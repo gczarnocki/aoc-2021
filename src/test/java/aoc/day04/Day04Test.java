@@ -31,8 +31,6 @@ public class Day04Test {
             "2  0 12  3  7"
     );
 
-    private List<String> numbers = Arrays.asList("2", "7", "12", "17", "22");
-
     private List<String> input1 = Arrays.asList(
         "1  2  3  4  5",
         "6  7  8  9  10",
@@ -52,21 +50,23 @@ public class Day04Test {
     @Test
     public void testCheckIfRowIsFullyMarked() {
         BingoBoard board1 = new BingoBoard(input1);
+        Arrays.asList(1, 2, 3, 4, 5).stream().forEach(n -> board1.markField(n));
 
-        for(String s : numbers) {
-            board1.markField(Integer.parseInt(s));
-        }
+        assertEquals(true, board1.checkIfRowIsFullyMarked(0));
+    }
 
-        assertEquals(true, board1.checkIfRowIsFullyMarked(1));
+    @Test
+    public void testCheckIfColumnIsFullyMarked() {
+        BingoBoard board1 = new BingoBoard(input1);
+        Arrays.asList(1, 6, 11, 16, 21).stream().forEach(n -> board1.markField(n));
+
+        assertEquals(true, board1.checkIfColumnIsFullyMarked(0));
     }
 
     @Test
     public void testCheckIfBoardWins() {
         BingoBoard board1 = new BingoBoard(input1);
-
-        for(String s : numbers) {
-            board1.markField(Integer.parseInt(s));
-        }
+        Arrays.asList(1, 6, 11, 16, 21).stream().forEach(n -> board1.markField(n));
 
         assertEquals(true, board1.checkIfBoardWins());
     }
@@ -74,10 +74,7 @@ public class Day04Test {
     @Test
     public void testGetSumOfAllUnmarkedFields() {
         BingoBoard board1 = new BingoBoard(input1);
-
-        for(String s : numbers) {
-            board1.markField(Integer.parseInt(s));
-        }
+        Arrays.asList(2, 7, 12, 17, 22).stream().forEach(n -> board1.markField(n));
 
         assertEquals(265, board1.getSumOfAllUnmarkedFields());
     }
